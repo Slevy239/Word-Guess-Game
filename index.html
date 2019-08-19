@@ -9,53 +9,43 @@
 </head>
 
 <body>
-    <p># <span id="user-text"></span></p>
-
+    <header>
+        <h1>THE HANGMAN GAME</h1>
+        <h2>Welcome!</h2>
+    </header>
+    <!-- <div id="container">
+        <h3>Guess the word</h3>
+        <h3><span id="guessingword"></span></h3>
+        <h4>Remaining Guesses: <span id="guessleft"></span></h4> -->
+    </div>
 
     <script>
+    var possiblewords = ['javascript', 'html', 'coding','css']
+    var random = possiblewords[Math.floor(Math.random() * possiblewords.length)]
+    var selectedword = []
+    var remainingguesses = random.length
+    alert(random)
 
+    for (i = 0; i < random.length; i++) {
+        selectedword.push("_");
+        console.log(selectedword)
+    }
 
-
-        var words = ['javascript', 'coding', 'html', 'css']  // words
-        var word = words[Math.floor(Math.random() * words.length)]//picks random
-        var guessingword = []
-
-        for (var i = 0; i < word.length; i++) {  //makes _ _ _ 
-            guessingword.push("_");
-        }
-
-        var guessleft = word.length + 3   // random word * it's characters
-
-
-        while (guessleft > 0){  // the game continues until there are no guesses left
-            alert(guessingword.join(" "));  //in the alert the word is presented with underscores and spaces
-             var userinput = prompt("Guess a single letter!");   //input with text
-        if (userinput === " " || userinput.length > 1) {    //when the guess is a space or larger than 1 letter, alerts user to use a single letter
-            alert("A single Letter!!");
+    while (remainingguesses > 0) {
+        var userinput = prompt('Guess a Letter');
+        if (userinput.length > 1 || userinput === '') {
+            alert("Enter a Single Letter");
         }else {
-            for (var j = 0; j < word.length; j++) {  
-                if (word[j] === userinput) {                         // if the userinput is within the word array at point j, the game alerts/ letter is pushed to guessingword array
-                alert("Good Guess!");
-                guessingword[j] = userinput;
-                guessleft--;                                              //guess is subtracted
-                document.write(word[j]);                              //presents the letter that has been guessed
-                }
-                }
-                if (word[j] !== userinput) {               // if guess is incorrect
-                    alert("Wrong! You have " + guessleft + " guesses left!");       // shows number of guesses left
-                    guessleft--;
-                }
-                }
+            for (k = 0; k < selectedword.length; k++) {
+             if (userinput === selectedword[k]) {
+                alert("good guess");
+                remainingguesses--;
+                selectedword[k] = userinput;
+                console.log(selectedword[k]);
+            }
+            }
         }
-
-
-
-            
-       
-
-
-
-
+    }
     </script>
 
 </body>
