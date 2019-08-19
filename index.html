@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p># <span id="user-text"></span></p>
+
+
+    <script>
+
+
+
+        var words = ['javascript', 'coding', 'html', 'css']  // words
+        var word = words[Math.floor(Math.random() * words.length)]//picks random
+        var guessingword = []
+
+        for (var i = 0; i < word.length; i++) {  //makes _ _ _ 
+            guessingword.push("_");
+        }
+
+        var guessleft = word.length  // random word * it's characters
+                                                        //game loop
+
+
+// there are letters left to be guessed, show the player their pogress with .join
+        while (guessleft > 0){
+//get a guess from user
+            alert(guessingword.join(" "));
+             var userinput = prompt("Guess a single letter!");
+            
+        
+        
+//condition: only one letter, can't be blank
+// if the guess is more than one letter or no letters => alert to guess one letter
+        if (userinput === " " || userinput.length > 1) {
+            alert("A single Letter!!");
+            guessleft--;
+        }else {
+            for (var j = 0; j < word.length; j++) { //correct guess
+                if (word[j] === userinput) {
+                alert("Good Guess!");
+                guessingword[j] = userinput;
+                guessleft--;
+                document.write(word[j]);                    
+                }
+                }
+                }
+        }
+
+
+
+            
+       
+
+//else 
+//update state of the game after the guess (for)
+        // if the letter they guess is in the word, 
+            //at that point or index
+                //update answer array with letter guessed at that point
+                //subtract a guess
+
+
+
+    </script>
+
+</body>
+
+</html>
