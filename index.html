@@ -28,26 +28,18 @@
                                                         //game loop
 
 
-// there are letters left to be guessed, show the player their pogress with .join
-        while (guessleft > 0){
-//get a guess from user
-            alert(guessingword.join(" "));
-             var userinput = prompt("Guess a single letter!");
-            
-        
-        
-//condition: only one letter, can't be blank
-// if the guess is more than one letter or no letters => alert to guess one letter
-        if (userinput === " " || userinput.length > 1) {
+        while (guessleft > 0){  // the game continues until there are no guesses left
+            alert(guessingword.join(" "));  //in the alert the word is presented with underscores and spaces
+             var userinput = prompt("Guess a single letter!");   //input with text
+        if (userinput === " " || userinput.length > 1) {    //when the guess is a space or larger than 1 letter, alerts user to use a single letter
             alert("A single Letter!!");
-            guessleft--;
         }else {
-            for (var j = 0; j < word.length; j++) { //correct guess
-                if (word[j] === userinput) {
+            for (var j = 0; j < word.length; j++) {  
+                if (word[j] === userinput) {                         // if the userinput is within the word array at point j, the game alerts/ letter is pushed to guessingword array
                 alert("Good Guess!");
                 guessingword[j] = userinput;
-                guessleft--;
-                document.write(word[j]);                    
+                guessleft--;                                              //guess is subtracted
+                document.write(word[j]);                              //presents the letter that has been guessed
                 }
                 }
                 }
