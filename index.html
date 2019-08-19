@@ -24,8 +24,7 @@
             guessingword.push("_");
         }
 
-        var guessleft = word.length  // random word * it's characters
-                                                        //game loop
+        var guessleft = word.length + 3   // random word * it's characters
 
 
         while (guessleft > 0){  // the game continues until there are no guesses left
@@ -42,6 +41,10 @@
                 document.write(word[j]);                              //presents the letter that has been guessed
                 }
                 }
+                if (word[j] !== userinput) {               // if guess is incorrect
+                    alert("Wrong! You have " + guessleft + " guesses left!");       // shows number of guesses left
+                    guessleft--;
+                }
                 }
         }
 
@@ -50,12 +53,6 @@
             
        
 
-//else 
-//update state of the game after the guess (for)
-        // if the letter they guess is in the word, 
-            //at that point or index
-                //update answer array with letter guessed at that point
-                //subtract a guess
 
 
 
