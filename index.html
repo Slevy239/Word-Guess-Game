@@ -12,40 +12,48 @@
     <header>
         <h1>THE HANGMAN GAME</h1>
         <h2>Welcome!</h2>
+        <h2> <span id="userguess"><strong>...Nothing.</strong></span></h2>
     </header>
-    <!-- <div id="container">
-        <h3>Guess the word</h3>
-        <h3><span id="guessingword"></span></h3>
-        <h4>Remaining Guesses: <span id="guessleft"></span></h4> -->
     </div>
 
     <script>
-    var possiblewords = ['javascript', 'html', 'coding','css']
-    var random = possiblewords[Math.floor(Math.random() * possiblewords.length)]
-    var selectedword = []
-    var remainingguesses = random.length
-    alert(random)
+        var possiblewords = ['javascript', 'html', 'coding', 'css'];
+        var random = possiblewords[Math.floor(Math.random() * possiblewords.length)];
+        var selectedword = [];
+        var guessedletters = [];
+        var remainingguesses = random.length;
+        var userChoice = document.getElementById("userguess");
+        var correctguess = 0;
 
-    for (i = 0; i < random.length; i++) {
-        selectedword.push("_");
-        console.log(selectedword)
-    }
+        document.onkeyup = function (event) {
+            var userGuess = event.key;
 
-    while (remainingguesses > 0) {
-        var userinput = prompt('Guess a Letter');
-        if (userinput.length > 1 || userinput === '') {
-            alert("Enter a Single Letter");
-        }else {
-            for (k = 0; k < selectedword.length; k++) {
-             if (userinput === selectedword[k]) {
-                alert("good guess");
-                remainingguesses--;
-                selectedword[k] = userinput;
-                console.log(selectedword[k]);
-            }
-            }
+        };
+        console.log(selectedword);
+
+        for (i = 0; i < random.length; i++) {
+            selectedword.push("_");
         }
-    }
+
+        function Game() {
+            while (remainingguesses > 0) {
+                for (j = 0; j < selectedword.length; j++) {
+                    if (selectedword[j] === userText) {
+                        remainingguesses--;
+                        document.getElementById('correctguess').textContent = correctguess;
+                        document.write("good Guess")
+                    } else {
+                        remainingguesses--;
+                        guessedletters.push(userText);
+                        document.write('try again')
+                    }
+                }
+            }
+
+            document.getElementById('user-choice').textContent = userGuess;
+
+
+
     </script>
 
 </body>
