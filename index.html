@@ -12,7 +12,7 @@
     <header>
         <h1>THE HANGMAN GAME</h1>
         <h2>Welcome!</h2>
-        <h2> <span id="userguess"><strong>...Nothing.</strong></span></h2>
+        <h2><span id="user-guess"><strong>...Nothing.</strong></span></h2>
     </header>
     </div>
 
@@ -22,38 +22,32 @@
         var selectedword = [];
         var guessedletters = [];
         var remainingguesses = random.length;
-        var userChoice = document.getElementById("userguess");
-        var correctguess = 0;
+        var correctguess = [];
 
-        document.onkeyup = function (event) {
-            var userGuess = event.key;
-
-        };
-        console.log(selectedword);
-
-        for (i = 0; i < random.length; i++) {
+        for (var i = 0; i < random.length; i++) {
             selectedword.push("_");
         }
+        console.log(selectedword);
 
-        function Game() {
+        document.onkeyup = function(event) {
+            var UserInput = event.key;
+
+
             while (remainingguesses > 0) {
-                for (j = 0; j < selectedword.length; j++) {
-                    if (selectedword[j] === userText) {
+                for (var j = 0; j < random.length; j++) {
+                    if (random[j] === UserInput) {
                         remainingguesses--;
-                        document.getElementById('correctguess').textContent = correctguess;
-                        document.write("good Guess")
-                    } else {
+                        selectedword[j].push(UserInput);
+                       console.log(selectedword);
+                    } else if (random[j] !== UserInput) {
                         remainingguesses--;
-                        guessedletters.push(userText);
-                        document.write('try again')
+                        guessedletters.push(selectedword);
+                        console.log(guessedletters);
                     }
                 }
             }
-
-            document.getElementById('user-choice').textContent = userGuess;
-
-
-
+        
+        };
     </script>
 
 </body>
