@@ -20,6 +20,7 @@
             <h1 class="col-lg-12">Welcome!</h1>
             <h3 class="col-lg-12">Instructions:</h3>
             <h3 class="col-lg-12">To Start: Press any letter to guess<span id="user-guess"></span></h3>
+            <h3><span id="underscored"></span></h3>
         </div>
         <div class="container">
             <h1 id="underscore" class="col-lg-12"></h1>
@@ -34,37 +35,39 @@
     </div>
 
     <script>
-        var possiblewords = ['javascript', 'html', 'coding', 'css', 'idk what I am doing'];
+        var possiblewords = ['javascript', 'html', 'coding', 'css'];
         var random = possiblewords[Math.floor(Math.random() * possiblewords.length)];
         var underscored = [];
         var guessedletters = [];
-        var remainingguesses = random.length * 1;
+        var remainingguesses = random.length;
         var correctguess = [];
 
 
         for (var i = 0; i < random.length; i++) {
             underscored.push("_");
+            document.getElementById("underscored").innerHTML;
         }
 
         document.onkeyup = function (event) {
             if (event.keyCode > 64 && event.keyCode < 91) {
                 var UserInput = event.key;
-                document.getElementById("user-guess");
+                document.getElementById("user-guess").innerHTML;
 
                 for (let j = 0; j < random.length; j++) {
                     if (UserInput === random[j]) {
                         remainingguesses--;
+                        underscored[j] = UserInput;
                         alert("good guess")
-                        console.log(random[j]);
-                        underscored.push(UserInput)
-                    } else {
+                    }else {
                         remainingguesses--;
                         guessedletters.push(UserInput);
-                        alert("wrong guess")
+                        document.getElementById("guessedletters").innerHTML;
+                        alert("wrong guess");
                     }
                 }
             }
         };
+                        console.log(underscored);
 
     </script>
 
