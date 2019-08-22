@@ -17,9 +17,9 @@
             <h1 class="col-lg-12">THE HANGMAN GAME</h1>
         </div>
         <div class="container">
-        <h1 class="col-lg-12">Welcome!</h1>
-        <h3 class="col-lg-12">Instructions:</h3>
-        <h3 class="col-lg-12">To Start: Press any letter to guess<span id="user-guess"></span></h3>
+            <h1 class="col-lg-12">Welcome!</h1>
+            <h3 class="col-lg-12">Instructions:</h3>
+            <h3 class="col-lg-12">To Start: Press any letter to guess<span id="user-guess"></span></h3>
         </div>
         <div class="container">
             <h1 id="underscore" class="col-lg-12"></h1>
@@ -34,11 +34,11 @@
     </div>
 
     <script>
-        var possiblewords = ['javascript', 'html', 'coding', 'css'];
+        var possiblewords = ['javascript', 'html', 'coding', 'css', 'idk what I am doing'];
         var random = possiblewords[Math.floor(Math.random() * possiblewords.length)];
         var underscored = [];
         var guessedletters = [];
-        var remainingguesses = random.length * 2;
+        var remainingguesses = random.length * 1;
         var correctguess = [];
 
 
@@ -47,21 +47,23 @@
         }
 
         document.onkeyup = function (event) {
-            var UserInput = event.key;
-            document.getElementById("user-guess");
-        
+            if (event.keyCode > 64 && event.keyCode < 91) {
+                var UserInput = event.key;
+                document.getElementById("user-guess");
 
-        for (let j = 0; j < random.length; j++) {
-            if (UserInput === random[j]) {
-              remainingguesses--;  
-              alert("good guess")
-        console.log(random[j]);
-            } else {
-                remainingguesses--;
-                guessedletters.push(UserInput);
-                alert("wrong guess")
+                for (let j = 0; j < random.length; j++) {
+                    if (UserInput === random[j]) {
+                        remainingguesses--;
+                        alert("good guess")
+                        console.log(random[j]);
+                        underscored.push(UserInput)
+                    } else {
+                        remainingguesses--;
+                        guessedletters.push(UserInput);
+                        alert("wrong guess")
+                    }
+                }
             }
-        }   
         };
 
     </script>

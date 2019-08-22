@@ -1,10 +1,10 @@
-body {
+/* body {
     background-image: url(../Word-Guess-Game/Assets/Background.png);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-  }
+  } */
 header {
     text-align: center;
 }
