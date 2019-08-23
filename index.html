@@ -52,7 +52,8 @@
             if (event.keyCode > 64 && event.keyCode < 91) {
                 var UserInput = event.key;
                 document.getElementById("user-guess").textContent = underscored;
-                        document.getElementById("guessedletters").textContent = guessedletters;
+                document.getElementById("guessedletters").textContent = [...new Set(guessedletters)]
+;
 
                 for (var j = 0; j < random.length; j++) {
                     if (random[j] === UserInput) {
