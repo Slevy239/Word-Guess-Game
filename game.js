@@ -16,7 +16,8 @@ document.onkeyup = function start (event) {          //initiates game with key p
         var UserInput = event.key;
         document.getElementById("user-guess").textContent = underscored.join(" ");  // removes commas
         document.getElementById("guessedletters").textContent = [...new Set(guessedletters)];    //only allows for unique guesses
-        guessedletters.push(UserInput);         // displays guesses in guessedletters array
+        guessedletters.push(UserInput);   // displays guesses in guessedletters array
+
 
         for (var j = 0; j < random.length; j++) {
             if (random[j] === UserInput) {  
@@ -31,10 +32,12 @@ document.getElementById("remainingguesses").textContent = remainingguesses;  //d
     }
 if (underscored.join("") === random) {   // win condition
     wins++;
+    location.reload();
     console.log(wins)
 }
 if (remainingguesses <= 0) {
-    alert("You LOSE!")
+    alert("You LOSE!");
+    location.reload();
 }
 };
 
