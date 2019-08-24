@@ -13,8 +13,8 @@ for (var i = 0; i < random.length; i++) {   //gives randomly selected word "_" i
 
 document.onkeyup = function start (event) {          //initiates game with key press
     if (event.keyCode > 64 && event.keyCode < 91) {
-        var UserInput = event.key;
         document.getElementById("user-guess").textContent = underscored.join(" ");  // removes commas
+        var UserInput = event.key;
         document.getElementById("guessedletters").textContent = [...new Set(guessedletters)];    //only allows for unique guesses
         guessedletters.push(UserInput);   // displays guesses in guessedletters array
 
@@ -30,14 +30,13 @@ document.onkeyup = function start (event) {          //initiates game with key p
         }
 document.getElementById("remainingguesses").textContent = remainingguesses;  //displays guesses
     }
-if (underscored.join("") === random) {   // win condition
+if (underscored.join("") === random) {   // win condition and reset
     wins++;
-    location.reload();
+    document.getElementById("result").innerHTML = "YOU WIN!"
     console.log(wins)
 }
-if (remainingguesses <= 0) {
-    alert("You LOSE!");
-    location.reload();
+if (remainingguesses <= 0) { // loss and reset
+    document.getElementById("result").innerHTML = "YOU LOSE!";
 }
 };
 
