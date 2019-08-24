@@ -7,7 +7,7 @@ var wins = 0;
 var correctguess = [];
 var uniqueArray = [];
 console.log(random);
-// NEED TO STOP UNIQUE ARRAY FROM SHOWING LETTERS IN THE WORD
+// NEED TO STOP UNIQUE ARRAY FROM CORRECT GUESSED LETTERS
 
 
 for (var i = 0; i < random.length; i++) {   //gives randomly selected word "_" in place of it's characters
@@ -18,9 +18,6 @@ document.onkeyup = function (event) {          //initiates game with key press
     if (event.keyCode > 64 && event.keyCode < 91) {
         var UserInput = event.key;
         guessedletters.push(UserInput); // push guess into array
-
-
-
         remainingguesses--;  //removes guess
 
         for (var j = 0; j < random.length; j++) {
@@ -34,14 +31,14 @@ document.onkeyup = function (event) {          //initiates game with key press
         }
         console.log(uniqueArray);
         document.getElementById("guessedletters").textContent = uniqueArray.join(',');
-
         document.getElementById("user-guess").textContent = underscored.join(" ");  // removes commas
 
     }
+
     document.getElementById("remainingguesses").textContent = remainingguesses;  //displays guesses
     if (underscored.join("") === random) {   // win condition 
         wins++;
-        document.getElementById("result").innerHTML = "YOU WIN!"
+        document.getElementById("result").innerHTML = "YOU WIN!";
         document.getElementById("wins").textContent = wins;
     }
     if (remainingguesses <= 0) { // loss
