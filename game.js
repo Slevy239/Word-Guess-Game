@@ -15,8 +15,8 @@ for (var i = 0; i < random.length; i++) {   //gives randomly selected word "_" i
 }
 
 document.onkeyup = function (event) {          //initiates game with key press
-    if (event.keyCode > 64 && event.keyCode < 91) {
-        var UserInput = event.key;
+    if (event.keyCode > 64 && event.keyCode < 91) {  // limits to letters only
+        var UserInput = event.key;  //userinput is an event
         guessedletters.push(UserInput); // push guess into array
         remainingguesses--;  //removes guess
 
